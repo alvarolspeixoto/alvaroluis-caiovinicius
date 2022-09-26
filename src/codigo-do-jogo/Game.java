@@ -113,12 +113,35 @@ public class Game
     public void play() 
     {            
         printWelcome();
-
+        long startTime = 0;
+        long endTime = 0;
+        boolean startTimeControl = true;
+        boolean hurryUp = true;
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
                 
         boolean finished = false;
         while (!finished) {
+            
+            if(temDiploma == startTimeControl == true){
+                startTimeControl = false;
+                startTime = System.currentTimeMillis();
+            }
+            endTime = System.currentTimeMillis();
+            long currentTime = endTime - startTime;
+            if(temDiploma == hurryUp == true && currentTime >= 7500){
+                hurryUp = false;
+                System.out.println("O fantasma do reitor está se aproximando!");
+                System.out.println("Encontre a saída já!");
+            }
+            else if(temDiploma == true && currentTime >= 15000){
+                finished = true;
+                System.out.println("O FANTASMA TE PEGOU!");
+                System.out.println("Você não pegou o diploma a tempo e agora viverá");
+                System.out.println("eternamente na universidade!");
+                System.out.println("Boa sorte na nova vida como gato na universidade mal assombrada.");
+                break;
+            }
             Command command = parser.getCommand();
             finished = processCommand(command);
             if(checkWin()){
@@ -133,12 +156,14 @@ public class Game
         if(currentRoom == salaDiploma){
             temDiploma = true;
             System.out.println("Você encontrou o diploma, agora vá para a saída");
-            System.out.println("antes que o fantasma do reitor João Alumínio de Canos te pegue!");
+            System.out.println("antes que o fantasma do reitor João Alumínio do campus te pegue!");
+            System.out.println("Você tem 15 SEGUNDOS!");
         }     
     }
 
     public boolean checkWin(){
-        pegouDiploma();
+        if(temDiploma == false) 
+            pegouDiploma();
         return temDiploma && (exitRoom == currentRoom);
         
     }
@@ -151,6 +176,7 @@ public class Game
         System.out.println();
         System.out.println("Bem-vindo ao jogo Escape UFS!");
         System.out.println("Escape UFS é um novo e incrível jogo de aventura.");
+        System.out.println("Vá em busca do seu diploma ou algo terrível pode lhe acontecer!");
         System.out.println("Digite '" + CommandWord.HELP + "' caso precise de ajuda.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -199,8 +225,8 @@ public class Game
     private void printHelp() 
     {
         System.out.println("Você está perdido. Sua única companhia são os gatos e");
-        System.out.println("o fantasma do reitor João Alumínio de Canos. Você está vagando");
-        System.out.println("ao redor do campus.");
+        System.out.println("o fantasma do reitor João Alumínio do campus. Você está vagando");
+        System.out.println("ao redor da UFS.");
         System.out.println();
         System.out.println("Seus comandos são:");
         parser.showCommands();
