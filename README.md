@@ -13,7 +13,7 @@ Repositório do jogo Escape UFS, baseado no jogo Zuul, disponibilizado no livro 
 
 * O objetivo geral do jogo é conseguir escapar do campus universitário.
 * Para alcançar o objetivo geral, é necessário anteriormente encontrar o diploma, o qual pode estar escondido em qualquer uma das salas do jogo.
-* Após encontrar o diploma, o jogador deve encontrar a saída antes que seja pego pelo fantasma do reitor e seja preso eternamente na UFS na forma de um gato.
+* Após encontrar o diploma, o jogador tem 15 segundos para encontrar a saída antes que seja pego pelo fantasma do reitor e seja preso eternamente na UFS na forma de um gato.
 
 ## Mapa do jogo
 <img src="escape-ufs.jpg" width="600px"/>
